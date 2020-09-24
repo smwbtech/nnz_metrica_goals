@@ -50,11 +50,24 @@ function $ymt_purchaseConfirmationHandler(e) {
 	}
 }
 
-window.onload = () => {
+/**
+ * Init event listeners for form
+ */
+function $ymt_init() {
 	const formSelector =
 		'body > div.push_container > div > div.container.container_middle > div > div.row > div.grid5.md6.tb12 > form';
 	const form = document.querySelector(formSelector);
 	if (form) {
-		form.addEventListener('click', $ymt_purchaseConfirmationHandler);
+		form.addEventListener('click', $ymt_purchaseConfirmationHandler, {
+			once: true,
+		});
 	}
-};
+}
+
+(function () {
+	if (document.readyState !== 'complete') {
+		window.addEventListener('load', $ymt_init);
+	} else {
+		$ymt_init();
+	}
+})();
