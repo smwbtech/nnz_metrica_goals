@@ -21,19 +21,21 @@ function $ymt_purchaseConfirmationHandler(e) {
 		const totalCartElement = document.querySelector(
 			'.totalcart .totalcart_price'
 		);
-		const confirmoxElement = document.querySelector('.confirmbox.edituser');
-		if (totalCartElement) {
+		const confirmboxElement = document.querySelector(
+			'.confirmbox.edituser'
+		);
+		if (totalCartElement && confirmboxElement) {
 			const totalCartText = totalCartElement.innerText;
 			visitParams.order_price = parseFloat(
 				totalCartText.split('\n')[2].replace(/ /g, '')
 			);
-			visitParams.comapny_info.name = confirmoxElement.children[0].innerText.split(
+			visitParams.comapny_info.name = confirmboxElement.children[0].innerText.split(
 				'\n'
 			)[1];
-			visitParams.comapny_info.inn = confirmoxElement.children[1].innerText.split(
+			visitParams.comapny_info.inn = confirmboxElement.children[1].innerText.split(
 				'\n'
 			)[1];
-			visitParams.comapny_info.kpp = confirmoxElement.children[2].innerText.split(
+			visitParams.comapny_info.kpp = confirmboxElement.children[2].innerText.split(
 				'\n'
 			)[1];
 
