@@ -6,6 +6,7 @@
  */
 
 function $ymt_purchaseConfirmationHandler(e) {
+	e.preventDefault();
 	try {
 		const visitParams = {
 			comapny_info: {
@@ -41,23 +42,19 @@ function $ymt_purchaseConfirmationHandler(e) {
 				'purchaseConfirmed_authorized',
 				visitParams
 			);
-			console.log(visitParams);
 		}
 	} catch (e) {
 		console.error(e);
 	} finally {
-		return true;
+		e.currentTarget.submit();
 	}
 }
 
 window.onload = () => {
-	const confirmButtonSelector =
-		'body > div.push_container > div > div.container.container_middle > div > div.row > div.grid5.md6.tb12 > form > div > input';
-	const confirmButton = document.querySelector(confirmButtonSelector);
-	if (confirmButton) {
-		confirmButton.addEventListener(
-			'click',
-			$ymt_purchaseConfirmationHandler
-		);
+	const formSelector =
+		'body > div.push_container > div > div.container.container_middle > div > div.row > div.grid5.md6.tb12 > form';
+	const form = document.querySelector(formSelector);
+	if (form) {
+		form.addEventListener('click', $ymt_purchaseConfirmationHandler);
 	}
 };
