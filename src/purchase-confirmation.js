@@ -1,6 +1,7 @@
 /**
  * Отрпавка параметров визита Yandex Metrika
  * при оформлении заказа зарегистрироваашися пользователем
+ * path: /emarket/purchasing_one_step/payment_choose/
  * @param {object<MouseEvent>} e
  * @returns {boolean} - всегда возвращает true
  */
