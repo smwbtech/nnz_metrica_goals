@@ -1,50 +1,45 @@
+import getComapnyInfo from './helpers/get-company-info.js';
+import getOrderInfo from './helpers/get-order-info.js';
+import getPriceInfo from './helpers/get-price-info.js';
+
 /**
  * Отрпавка параметров визита Yandex Metrika
  * при оформлении заказа зарегистрироваашися пользователем
  * path: /emarket/purchasing_one_step/payment_choose/
- * @param {object<MouseEvent>} e
+ * @param {object<SubmitEvent>} e
  * @returns {boolean} - всегда возвращает true
  */
 
 function $ymt_purchaseConfirmationHandler(e) {
 	e.preventDefault();
 	try {
-		const visitParams = {
-			comapny_info: {
-				name: null,
-				inn: null,
-				kpp: null,
-			},
-			order_price: null,
-			currency: 'USD',
-		};
-		const totalCartElement = document.querySelector(
-			'.totalcart .totalcart_price'
-		);
-		const confirmboxElement = document.querySelector(
-			'.confirmbox.edituser'
-		);
-		if (totalCartElement && confirmboxElement) {
-			const totalCartText = totalCartElement.innerText;
-			visitParams.order_price = parseFloat(
-				totalCartText.split('\n')[2].replace(/ /g, '')
-			);
-			visitParams.comapny_info.name =
-				confirmboxElement.children?.[0]?.innerText?.split('\n')?.[1] ??
-				'не установлено';
-			visitParams.comapny_info.inn =
-				confirmboxElement.children?.[1]?.innerText?.split('\n')?.[1] ??
-				'не установлено';
-			visitParams.comapny_info.kpp =
-				confirmboxElement.children?.[2]?.innerText?.split('\n')?.[1] ??
-				'не установлено';
+		const order_price = getPriceInfo();
+		const company_info = getComapnyInfo();
+		const order = getOrderInfo();
 
+		if (order_price && company_info && order) {
+			const orderInfo = {
+				order_price,
+				currency: 'USD',
+				order,
+			};
+
+			const clientInfo = {
+				UserID: `${company_info.inn}-${company_info.kpp}`,
+				company_info,
+			};
+
+			orderInfo.UserID = `${company_info.inn}-${company_info.kpp}`;
+			// Отправляем параметры визита
 			ym(
 				48468320,
 				'reachGoal',
 				'purchaseConfirmed_authorized',
-				visitParams
+				orderInfo
 			);
+
+			// Отправляем параметры пользователя
+			ym(48468320, 'userParams', clientInfo);
 		}
 	} catch (e) {
 		console.error(e);
