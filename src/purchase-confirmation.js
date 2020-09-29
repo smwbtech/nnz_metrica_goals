@@ -16,8 +16,15 @@ function $ymt_purchaseConfirmationHandler(e) {
 		const order_price = getPriceInfo();
 		const company_info = getComapnyInfo();
 		const order = getOrderInfo();
+		const ym = globalThis.ym ?? null;
 
-		if (order_price && company_info && order) {
+		if (
+			ym &&
+			typeof ym === 'function' &&
+			order_price &&
+			company_info &&
+			order
+		) {
 			const orderInfo = {
 				order_price,
 				currency: 'USD',
@@ -56,7 +63,7 @@ function $ymt_init() {
 		'body > div.push_container > div > div.container.container_middle > div > div.row > div.grid5.md6.tb12 > form';
 	const form = document.querySelector(formSelector);
 	if (form) {
-		form.addEventListener('click', $ymt_purchaseConfirmationHandler, {
+		form.addEventListener('submit', $ymt_purchaseConfirmationHandler, {
 			once: true,
 		});
 	}
