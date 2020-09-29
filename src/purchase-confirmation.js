@@ -16,7 +16,7 @@ function $ymt_purchaseConfirmationHandler(e) {
 		const order_price = getPriceInfo();
 		const company_info = getComapnyInfo();
 		const order = getOrderInfo();
-		const ym = globalThis.ym ?? null;
+		const ym = window.ym ?? null;
 
 		if (
 			ym &&
