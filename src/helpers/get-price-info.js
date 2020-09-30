@@ -11,7 +11,7 @@ export default function () {
 			?.replace(/ /g, '');
 		if (priceText) {
 			const priceFloat = parseFloat(priceText);
-			return priceFloat;
+			return isNaN(priceFloat) ? false : priceFloat;
 		}
 		return false;
 	}
