@@ -47,6 +47,8 @@ function $ymt_purchaseConfirmationHandler(e) {
 
 			// Отправляем параметры пользователя
 			ym(48468320, 'userParams', clientInfo);
+
+			return true;
 		}
 	} catch (e) {
 		console.error(e);
