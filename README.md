@@ -3,6 +3,7 @@
 Дополнительные обработчики событий для [nnz-ipc.ru](https://nnz-ipc.ru/)
 
 -   Оформление заказа авторизованным пользователем [source](https://github.com/smwbtech/nnz_metrica_goals/blob/master/src/purchase-confirmation.js)
+-   Оформление заказа незарегистрированным пользователем [source](https://github.com/smwbtech/nnz_metrica_goals/blob/master/dist/unregistered-purchase-confirmation.metrika-target-bundle.js)
 -   Добавление товара в корзину из карточки товара [source](https://github.com/smwbtech/nnz_metrica_goals/blob/master/src/item-card.js)
 
 ## Установка
