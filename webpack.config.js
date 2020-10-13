@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
 	entry: {
 		'purchase-confirmation': './src/purchase-confirmation.js',
+		'unregistered-purchase-confirmation': './src/unregisterd-purchase-confirmation.js'
 	},
 	output: {
 		filename: '[name].metrika-target-bundle.js',
