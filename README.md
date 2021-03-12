@@ -4,6 +4,7 @@
 
 -   Оформление заказа авторизованным пользователем [source](https://github.com/smwbtech/nnz_metrica_goals/blob/master/src/purchase-confirmation.js)
 -   Оформление заказа незарегистрированным пользователем [source](https://github.com/smwbtech/nnz_metrica_goals/blob/master/dist/unregistered-purchase-confirmation.metrika-target-bundle.js)
+-   Пользователь воспользовался фильтром [source](https://github.com/smwbtech/nnz_metrica_goals/blob/master/src/using-filter.js)
 -   Добавление товара в корзину из карточки товара [source](https://github.com/smwbtech/nnz_metrica_goals/blob/master/src/item-card.js)
 
 ## Установка
