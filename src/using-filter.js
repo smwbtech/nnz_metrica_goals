@@ -17,7 +17,7 @@ function $ymt_filtering_init() {
 
 (function () {
 	if (document.readyState !== 'complete') {
-		window.addEventListener('load', $ymt_filtering_init());
+		window.addEventListener('load', $ymt_filtering_init);
 	} else {
 		$ymt_filtering_init();
 	}
